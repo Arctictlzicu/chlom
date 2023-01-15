@@ -8,7 +8,8 @@ proxies:
   - {name: 香港dns服务器节点, server: 47.242.239.74, port: 8080, type: vmess, uuid: d255ebc6-9d1a-4eff-a66f-05f14cd70c61, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: 香港核心服务器, server: 43.155.100.143, port: 8080, type: vmess, uuid: 8ab946fd-945c-4d33-c01b-70b567f5d22b, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: a.189.cn}}, udp: true}
   - {name: 香港流媒体中转, server: 183.245.7.190, port: 26077, type: vmess, uuid: 55ac3b39-153e-45c8-bd9d-c31648f68687, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /}, udp: true}
-  - {name: 香港vm, server: emm.tlz.lol, port: 8898, type: vmess, uuid: 656baa31-3315-41aa-eed3-6ed35a6c8164, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, udp: true}
+  - {name: 香港tls, server: emm.tlz.lol, port: 8898, type: vmess, uuid: 656baa31-3315-41aa-eed3-6ed35a6c8164, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, udp: true}
+  - {name: 香港vm, server: 38.47.103.37, port: 8388, type: vmess, uuid: 4a1655cd-0858-432b-e90a-51e5b211ecf3, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -19,7 +20,8 @@ proxy-groups:
       - DIRECT
       - 香港dns服务器节点
       - 香港核心服务器
-      - 香港流媒体中转
+      - 香港流媒体中转 
+      - 香港tls
       - 香港vm
   - name: ♻️ 自动选择
     type: url-test
@@ -30,6 +32,7 @@ proxy-groups:
       - 香港dns服务器节点
       - 香港核心服务器
       - 香港流媒体中转
+      - 香港tls
       - 香港vm
   - name: 🔯 故障转移
     type: fallback
@@ -39,6 +42,7 @@ proxy-groups:
       - 香港dns服务器节点
       - 香港核心服务器
       - 香港流媒体中转
+      - 香港tls
       - 香港vm
   - name: 🔮 负载均衡
     type: load-balance
@@ -49,6 +53,7 @@ proxy-groups:
       - 香港dns服务器节点
       - 香港核心服务器
       - 香港流媒体中转
+      - 香港tls
       - 香港vm
   - name: 🎯 全球直连
     type: select
@@ -72,6 +77,7 @@ proxy-groups:
       - 香港dns服务器节点
       - 香港核心服务器
       - 香港流媒体中转
+      - 香港tls
       - 香港vm
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
