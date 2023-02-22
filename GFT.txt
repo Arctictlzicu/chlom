@@ -11,7 +11,6 @@ proxies:
   - {name: dns(HK)TLS, server: emm.tlz.asia, port: 8898, type: vmess, uuid: 0a2255af-c5c4-4cbb-f389-87f76a429465, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: emm.tlz.asia}}, udp: true}
   - {name: vm(HK), server: xui.tlz.lol, port: 8388, type: vmess, uuid: 4a1655cd-0858-432b-e90a-51e5b211ecf3, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: vm(HK)TLS, server: emm.tlz.lol, port: 8898, type: vmess, uuid: 656baa31-3315-41aa-eed3-6ed35a6c8164, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, udp: true}
-  - {name: awdwa, server: tlz, port: 0, type: socks5, skip-cert-verify: true, udp: true}
   - {name: tx(HK), server: xui.tlz.ink, port: 8848, type: vmess, uuid: 576e9983-f4e6-4b1d-c37c-f11d1aeacd53, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.ink}}, udp: true}
   - {name: tx(HK)TLZ, server: jk.tlz.ink, port: 8898, type: vmess, uuid: 2bd32b1e-08dd-467b-e1fd-05f3fece70b2, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /admin, headers: {Host: jk.tlz.ink}}, udp: true}
   - {name: JP, server: aikuai.admin.tlz.lol, port: 8898, type: vmess, uuid: df83c86f-0d97-4d1a-aa4b-5fb9022f03e5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: aikuai.admin.tlz.lol}}, udp: true}
@@ -33,7 +32,6 @@ proxy-groups:
       - dns(HK)TLS
       - vm(HK)
       - vm(HK)TLS
-      - awdwa
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -53,7 +51,6 @@ proxy-groups:
       - dns(HK)TLS
       - vm(HK)
       - vm(HK)TLS
-      - awdwa
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -72,7 +69,6 @@ proxy-groups:
       - dns(HK)TLS
       - vm(HK)
       - vm(HK)TLS
-      - awdwa
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -92,7 +88,6 @@ proxy-groups:
       - dns(HK)TLS
       - vm(HK)
       - vm(HK)TLS
-      - awdwa
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -125,7 +120,6 @@ proxy-groups:
       - dns(HK)TLS
       - vm(HK)
       - vm(HK)TLS
-      - awdwa
       - tx(HK)
       - tx(HK)TLZ
       - JP
