@@ -5,6 +5,7 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
+ - {name: aly(HK), server: xui.tlz.icu, port: 8848, type: vmess, uuid: 9caaba34-c5e0-46e2-9b97-e4625f272c55, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.icu}}, udp: true}
   - {name: aly(HK)TLS, server: jk.tlz.icu, port: 8898, type: vmess, uuid: 881f09e3-07cb-4f36-9075-21574d67ef69, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: jk.tlz.icu}}, udp: true}
   - {name: dns(HK), server: xui.tlz.asia, port: 8848, type: vmess, uuid: ca838029-b10d-40c3-90d1-4deba21ac4c5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.asia}}, udp: true}
   - {name: dns(HK)TLS, server: emm.tlz.asia, port: 8898, type: vmess, uuid: 0a2255af-c5c4-4cbb-f389-87f76a429465, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: emm.tlz.asia}}, udp: true}
@@ -25,6 +26,7 @@ proxy-groups:
       - 🔯 故障转移
       - 🔮 负载均衡
       - DIRECT
+      - aly(HK)
       - aly(HK)TLS
       - dns(HK)
       - dns(HK)TLS
@@ -43,6 +45,7 @@ proxy-groups:
     interval: 300
     tolerance: 50
     proxies:
+      - aly(HK)
       - aly(HK)TLS
       - dns(HK)
       - dns(HK)TLS
@@ -60,6 +63,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
+      - aly(HK)
       - aly(HK)TLS
       - dns(HK)
       - dns(HK)TLS
@@ -78,6 +82,7 @@ proxy-groups:
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
+      - aly(HK)
       - aly(HK)TLS
       - dns(HK)
       - dns(HK)TLS
@@ -109,6 +114,7 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🔮 负载均衡
+      - aly(HK)
       - aly(HK)TLS
       - dns(HK)
       - dns(HK)TLS
