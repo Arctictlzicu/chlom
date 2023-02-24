@@ -4,7 +4,6 @@ allow-lan: true
 mode: Rule
 log-level: info
 external-controller: :9090
-General:
 ipv6 = true
 dns-server = 47.242.239.74,2001:470:18:4cb::2
 proxies:
