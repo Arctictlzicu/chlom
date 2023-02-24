@@ -5,12 +5,10 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
-  - {name: aly(HK), server: xui.tlz.icu, port: 8848, type: vmess, uuid: 9caaba34-c5e0-46e2-9b97-e4625f272c55, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.icu}}, udp: true}
   - {name: aly(HK)TLS, server: jk.tlz.icu, port: 8898, type: vmess, uuid: 881f09e3-07cb-4f36-9075-21574d67ef69, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: jk.tlz.icu}}, udp: true}
+  - {name: ssr, server: xui.tlz.icu, port: 4837, type: ss, cipher: chacha20-poly1305, password: wXlmCTdfGw, udp: true}
   - {name: dns(HK), server: xui.tlz.asia, port: 8848, type: vmess, uuid: ca838029-b10d-40c3-90d1-4deba21ac4c5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.asia}}, udp: true}
   - {name: dns(HK)TLS, server: emm.tlz.asia, port: 8898, type: vmess, uuid: 0a2255af-c5c4-4cbb-f389-87f76a429465, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: emm.tlz.asia}}, udp: true}
-  - {name: vm(HK), server: xui.tlz.lol, port: 8388, type: vmess, uuid: 4a1655cd-0858-432b-e90a-51e5b211ecf3, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: vm(HK)TLS, server: emm.tlz.lol, port: 8898, type: vmess, uuid: 656baa31-3315-41aa-eed3-6ed35a6c8164, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, udp: true}
   - {name: tx(HK), server: xui.tlz.ink, port: 8848, type: vmess, uuid: 576e9983-f4e6-4b1d-c37c-f11d1aeacd53, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.ink}}, udp: true}
   - {name: tx(HK)TLZ, server: jk.tlz.ink, port: 8898, type: vmess, uuid: 2bd32b1e-08dd-467b-e1fd-05f3fece70b2, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /admin, headers: {Host: jk.tlz.ink}}, udp: true}
   - {name: JP, server: aikuai.admin.tlz.lol, port: 8898, type: vmess, uuid: df83c86f-0d97-4d1a-aa4b-5fb9022f03e5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: aikuai.admin.tlz.lol}}, udp: true}
@@ -18,6 +16,8 @@ proxies:
   - {name: lmt(HK)TLS, server: ssl.arctic.tlz.asia, port: 8963, type: vmess, uuid: f3d9768b-2fe4-40e1-944a-025be08bede0, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: ssl.arctic.tlz.asia}}, udp: true}
   - {name: lmt(HK), server: arctic.tlz.asia, port: 8848, type: vmess, uuid: 6eb0ec73-dc57-480e-bdeb-8ca70f0c1ea0, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: arctic.tlz.asia}}, udp: true}
   - {name: tr-HK-TLS, server: arctic.tlz.asia, port: 8898, type: trojan, password: 9LlSZOuXR1, skip-cert-verify: true, udp: true}
+  - {name: vm-HK-TLS, server: emm.tlz.lol, port: 8898, type: vmess, uuid: 0d10eb82-a293-4b8a-9aec-42715dcd840b, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: emm.tlz.lol}}, udp: true}
+  - {name: VM-HK, server: xui.tlz.lol, port: 8848, type: vmess, uuid: 1abb973c-9e27-43ba-9a06-2966b22c90b7, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.lol}}, udp: true}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -26,12 +26,10 @@ proxy-groups:
       - 🔯 故障转移
       - 🔮 负载均衡
       - DIRECT
-      - aly(HK)
       - aly(HK)TLS
+      - ssr
       - dns(HK)
       - dns(HK)TLS
-      - vm(HK)
-      - vm(HK)TLS
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -39,18 +37,18 @@ proxy-groups:
       - lmt(HK)TLS
       - lmt(HK)
       - tr-HK-TLS
+      - vm-HK-TLS
+      - VM-HK
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - aly(HK)
       - aly(HK)TLS
+      - ssr
       - dns(HK)
       - dns(HK)TLS
-      - vm(HK)
-      - vm(HK)TLS
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -58,17 +56,17 @@ proxy-groups:
       - lmt(HK)TLS
       - lmt(HK)
       - tr-HK-TLS
+      - vm-HK-TLS
+      - VM-HK
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
-      - aly(HK)
       - aly(HK)TLS
+      - ssr
       - dns(HK)
       - dns(HK)TLS
-      - vm(HK)
-      - vm(HK)TLS
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -76,18 +74,18 @@ proxy-groups:
       - lmt(HK)TLS
       - lmt(HK)
       - tr-HK-TLS
+      - vm-HK-TLS
+      - VM-HK
   - name: 🔮 负载均衡
     type: load-balance
     strategy: consistent-hashing
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
-      - aly(HK)
       - aly(HK)TLS
+      - ssr
       - dns(HK)
       - dns(HK)TLS
-      - vm(HK)
-      - vm(HK)TLS
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -95,6 +93,8 @@ proxy-groups:
       - lmt(HK)TLS
       - lmt(HK)
       - tr-HK-TLS
+      - vm-HK-TLS
+      - VM-HK
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -114,12 +114,10 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🔮 负载均衡
-      - aly(HK)
       - aly(HK)TLS
+      - ssr
       - dns(HK)
       - dns(HK)TLS
-      - vm(HK)
-      - vm(HK)TLS
       - tx(HK)
       - tx(HK)TLZ
       - JP
@@ -127,6 +125,8 @@ proxy-groups:
       - lmt(HK)TLS
       - lmt(HK)
       - tr-HK-TLS
+      - vm-HK-TLS
+      - VM-HK
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
