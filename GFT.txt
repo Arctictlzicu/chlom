@@ -6,7 +6,6 @@ log-level: info
 external-controller: :9090
 proxies:
   - {name: aly(HK)TLS, server: jk.tlz.icu, port: 8898, type: vmess, uuid: 881f09e3-07cb-4f36-9075-21574d67ef69, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: jk.tlz.icu}}, udp: true}
-  - {name: ssr, server: xui.tlz.icu, port: 4837, type: ss, cipher: chacha20-poly1305, password: wXlmCTdfGw, udp: true}
   - {name: dns(HK), server: xui.tlz.asia, port: 8848, type: vmess, uuid: ca838029-b10d-40c3-90d1-4deba21ac4c5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.asia}}, udp: true}
   - {name: dns(HK)TLS, server: emm.tlz.asia, port: 8898, type: vmess, uuid: 0a2255af-c5c4-4cbb-f389-87f76a429465, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: emm.tlz.asia}}, udp: true}
   - {name: tx(HK), server: xui.tlz.ink, port: 8848, type: vmess, uuid: 576e9983-f4e6-4b1d-c37c-f11d1aeacd53, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.ink}}, udp: true}
@@ -27,7 +26,6 @@ proxy-groups:
       - 🔮 负载均衡
       - DIRECT
       - aly(HK)TLS
-      - ssr
       - dns(HK)
       - dns(HK)TLS
       - tx(HK)
@@ -46,7 +44,6 @@ proxy-groups:
     tolerance: 50
     proxies:
       - aly(HK)TLS
-      - ssr
       - dns(HK)
       - dns(HK)TLS
       - tx(HK)
@@ -64,7 +61,6 @@ proxy-groups:
     interval: 180
     proxies:
       - aly(HK)TLS
-      - ssr
       - dns(HK)
       - dns(HK)TLS
       - tx(HK)
@@ -83,7 +79,6 @@ proxy-groups:
     interval: 180
     proxies:
       - aly(HK)TLS
-      - ssr
       - dns(HK)
       - dns(HK)TLS
       - tx(HK)
@@ -115,7 +110,6 @@ proxy-groups:
       - 🔯 故障转移
       - 🔮 负载均衡
       - aly(HK)TLS
-      - ssr
       - dns(HK)
       - dns(HK)TLS
       - tx(HK)
