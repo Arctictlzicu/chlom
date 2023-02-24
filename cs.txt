@@ -4,12 +4,9 @@ allow-lan: true
 mode: Rule
 log-level: info
 external-controller: :9090
-General
+General:
 ipv6 = true
 yaml = true
-bypass-system = true
-skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com
-tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
 dns-server = 47.242.239.74,2001:470:18:4cb::2
 proxies:
   - {name: aly(HK), server: xui.tlz.icu, port: 8848, type: vmess, uuid: 9caaba34-c5e0-46e2-9b97-e4625f272c55, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: xui.tlz.icu}}, udp: true}
