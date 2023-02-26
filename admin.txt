@@ -3,7 +3,6 @@ socks-port: 7891
 allow-lan: true
 mode: Rule
 log-level: info
-dns-server: 47.242.199.113,2001:470:18:627::2
 external-controller: :9090
 proxies:
   - {name: JP, server: aikuai.admin.tlz.lol, port: 8898, type: vmess, uuid: df83c86f-0d97-4d1a-aa4b-5fb9022f03e5, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: aikuai.admin.tlz.lol}}, udp: true}
