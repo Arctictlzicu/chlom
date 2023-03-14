@@ -5,17 +5,16 @@ mode: Rule
 log-level: info
 external-controller: :9090
 proxies:
-  - {name: dns-HK, server: 47.242.199.113, port: 4565, type: vmess, uuid: 7905bf0b-8126-4248-b3b8-8e8171758881, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: dns-HK-TLS, server: jk.tlz.icu, port: 9989, type: vmess, uuid: 7328bdf4-b3cf-48c4-d1d2-6ed4ac96f032, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: jk.tlz.icu}}, udp: true}
   - {name: dns-HK-TR, server: tls.tls.tlz.asia, port: 4566, type: trojan, password: vNM1sRUSqH, skip-cert-verify: true, udp: true}
   - {name: ssl-HK, server: 8.218.70.238, port: 7898, type: vmess, uuid: ca022e95-0cd2-4bbf-ed34-4f5dd9125af2, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
-  - {name: ssl-HK-TR, server: admin.admin.tlz.lol, port: 7899, type: trojan, password: 6r34UNw2FQ, skip-cert-verify: true, udp: true}
-  - {name: ssl-HK-TLS, server: tls.tlz.tlz.icu, port: 7897, type: vmess, uuid: acec9dd0-e4ed-4548-f249-68b20d35d849, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, network: ws, ws-opts: {path: /, headers: {Host: tls.tlz.tlz.icu}}, udp: true}
   - {name: vm-HK, server: 38.47.103.37, port: 7898, type: vmess, uuid: 4a1ad615-d05b-4a73-ea07-d87a3f3d0386, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: VM-HK-TR, server: tr.tls.tlz.asia, port: 7899, type: trojan, password: AdVphppd5L, skip-cert-verify: true, udp: true}
   - {name: CMI-HK, server: 38.47.121.174, port: 7897, type: vmess, uuid: 27b6fb45-438c-473f-d669-c5b1d479960a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: CMI-HK-TLS, server: cmi.tlz.lol, port: 7898, type: vmess, uuid: 1bcde00e-ec37-4b6e-f53b-6bf435c874db, alterId: 0, cipher: auto, tls: true, skip-cert-verify: true, udp: true}
   - {name: CMI-HK-TR, server: tr.cmi.tlz.lol, port: 7899, type: trojan, password: lQldBpqrr9, skip-cert-verify: true, udp: true}
+  - {name: CMI-HK-IPLC, server: 106.75.178.204, port: 65525, type: vmess, uuid: 27b6fb45-438c-473f-d669-c5b1d479960a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: dns-HK-TR-IPLC, server: 106.75.178.204, port: 65524, type: trojan, password: vNM1sRUSqH, skip-cert-verify: true, udp: true}
+
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -24,67 +23,63 @@ proxy-groups:
       - 🔯 故障转移
       - 🔮 负载均衡
       - DIRECT
-      - dns-HK
-      - dns-HK-TLS
       - dns-HK-TR
       - ssl-HK
-      - ssl-HK-TR
-      - ssl-HK-TLS
       - vm-HK
       - VM-HK-TR
       - CMI-HK
       - CMI-HK-TLS
       - CMI-HK-TR
+      - CMI-HK-IPLC
+      - dns-HK-TR-IPLC
+
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     tolerance: 50
     proxies:
-      - dns-HK
-      - dns-HK-TLS
       - dns-HK-TR
       - ssl-HK
-      - ssl-HK-TR
-      - ssl-HK-TLS
       - vm-HK
       - VM-HK-TR
       - CMI-HK
       - CMI-HK-TLS
       - CMI-HK-TR
+      - CMI-HK-IPLC
+      - dns-HK-TR-IPLC
+
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
-      - dns-HK
-      - dns-HK-TLS
       - dns-HK-TR
       - ssl-HK
-      - ssl-HK-TR
-      - ssl-HK-TLS
       - vm-HK
       - VM-HK-TR
       - CMI-HK
       - CMI-HK-TLS
       - CMI-HK-TR
+      - CMI-HK-IPLC
+      - dns-HK-TR-IPLC
+
   - name: 🔮 负载均衡
     type: load-balance
     strategy: consistent-hashing
     url: http://www.gstatic.com/generate_204
     interval: 180
     proxies:
-      - dns-HK
-      - dns-HK-TLS
       - dns-HK-TR
       - ssl-HK
-      - ssl-HK-TR
-      - ssl-HK-TLS
       - vm-HK
       - VM-HK-TR
       - CMI-HK
       - CMI-HK-TLS
       - CMI-HK-TR
+      - CMI-HK-IPLC
+      - dns-HK-TR-IPLC
+
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -104,17 +99,16 @@ proxy-groups:
       - ♻️ 自动选择
       - 🔯 故障转移
       - 🔮 负载均衡
-      - dns-HK
-      - dns-HK-TLS
       - dns-HK-TR
       - ssl-HK
-      - ssl-HK-TR
-      - ssl-HK-TLS
       - vm-HK
       - VM-HK-TR
       - CMI-HK
       - CMI-HK-TLS
       - CMI-HK-TR
+      - CMI-HK-IPLC
+      - dns-HK-TR-IPLC
+
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
