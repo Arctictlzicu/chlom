@@ -15,6 +15,10 @@ proxies:
   - {name: CMI-HK-IPLC, server: 106.75.178.204, port: 65525, type: vmess, uuid: 27b6fb45-438c-473f-d669-c5b1d479960a, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
   - {name: dns-HK-TR-IPLC, server: 106.75.178.204, port: 65524, type: trojan, password: vNM1sRUSqH, skip-cert-verify: true, udp: true}
   - {name: HK-AMD, server: xui.amd.tlz.asia, port: 7897, type: vmess, uuid: d7bc5824-9c8f-42c1-9b87-0a0275846fa1, alterId: 0, cipher: auto, tls: false, skip-cert-verify: true, udp: true}
+  - {name: tr.dns.tlz.asia, server: tr.dns.tlz.asia, port: 1231, type: trojan, password: bHlD0P4J1B, skip-cert-verify: true, udp: true}
+  - {name: tr.ssl.tlz.asia, server: tr.ssl.tlz.asia, port: 1231, type: trojan, password: mnRsPBuCJ9, skip-cert-verify: true, udp: true}
+  - {name: tr.vm.tlz.asia, server: tr.vm.tlz.asia, port: 1231, type: trojan, password: Yw8u0GTu2Q, skip-cert-verify: true, udp: true}
+  - {name: tr.amd.tlz.asia, server: tr.amd.tlz.asia, port: 1231, type: trojan, password: 4IZxnGCaLg, skip-cert-verify: true, udp: true}
 proxy-groups:
   - name: 🚀 节点选择
     type: select
@@ -33,6 +37,10 @@ proxy-groups:
       - CMI-HK-IPLC
       - dns-HK-TR-IPLC
       - HK-AMD
+      - tr.dns.tlz.asia
+      - tr.ssl.tlz.asia
+      - tr.vm.tlz.asia
+      - tr.amd.tlz.asia
   - name: ♻️ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
@@ -49,6 +57,10 @@ proxy-groups:
       - CMI-HK-IPLC
       - dns-HK-TR-IPLC
       - HK-AMD
+      - tr.dns.tlz.asia
+      - tr.ssl.tlz.asia
+      - tr.vm.tlz.asia
+      - tr.amd.tlz.asia
   - name: 🔯 故障转移
     type: fallback
     url: http://www.gstatic.com/generate_204
@@ -64,6 +76,10 @@ proxy-groups:
       - CMI-HK-IPLC
       - dns-HK-TR-IPLC
       - HK-AMD
+      - tr.dns.tlz.asia
+      - tr.ssl.tlz.asia
+      - tr.vm.tlz.asia
+      - tr.amd.tlz.asia
   - name: 🔮 负载均衡
     type: load-balance
     strategy: consistent-hashing
@@ -80,6 +96,10 @@ proxy-groups:
       - CMI-HK-IPLC
       - dns-HK-TR-IPLC
       - HK-AMD
+      - tr.dns.tlz.asia
+      - tr.ssl.tlz.asia
+      - tr.vm.tlz.asia
+      - tr.amd.tlz.asia
   - name: 🎯 全球直连
     type: select
     proxies:
@@ -109,6 +129,10 @@ proxy-groups:
       - CMI-HK-IPLC
       - dns-HK-TR-IPLC
       - HK-AMD
+      - tr.dns.tlz.asia
+      - tr.ssl.tlz.asia
+      - tr.vm.tlz.asia
+      - tr.amd.tlz.asia
 rules:
  - DOMAIN-SUFFIX,acl4.ssr,🎯 全球直连
  - DOMAIN-SUFFIX,ip6-localhost,🎯 全球直连
